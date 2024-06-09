@@ -8,9 +8,9 @@
 
 # 개발환경
 ### 프론트
-`$ npm install` -> vulnerability 무시 (라이브러리 제작자쪽 문제)
+`$ npm install` : vulnerability 무시 (라이브러리 제작자쪽 문제)
 <br/>
-`$ npm start` -> `.env.development` ~ baseUrl = localhost:8080 설정
+`$ npm start` : `.env.development` ~ baseUrl = localhost:8080 설정
 <br/>
 
 ### 백엔드
@@ -18,25 +18,25 @@
 <br/>
 `$ cd build/libs/`
 <br/>
-`$ java -jar backend-0.0.1.jar --spring.profiles.active=dev` -> DB = H2 설정
+`$ java -jar backend-0.0.1.jar --spring.profiles.active=dev` : DB = H2 설정
 <br/>
 
 ### DB(H2)
-`/src/main/resources/init.sql` -> database 생성
+`/src/main/resources/init.sql` : database 생성
 <br/>
 <br/>
 
 # 배포환경(도커 내에서 실행)
 ### 프론트
-`$ npm run build` -> `.env.production` ~ baseUrl = 크램폴린배포주소 설정
+`$ npm run build` : `.env.production` ~ baseUrl = 크램폴린배포주소 설정
 <br/>
 
 ### 백엔드
-`$ java -jar -Dspring.profiles.active=prod backend-0.0.1.jar` -> DB = MariaDB 설정
+`$ java -jar -Dspring.profiles.active=prod backend-0.0.1.jar` : DB = MariaDB 설정
 <br/>
 
 ### DB(MariaDB)
-`/k8s/configs/init.sql` -> database 생성
+`/k8s/configs/init.sql` : database 생성
 <br/>
 <br/>
 
@@ -61,7 +61,7 @@
 - Kakao API / Kakao OAuth / JWT 사용 시 주석 해제 ~ kubectl 명령어로 secret-key 입력 필요
 <br/>
 
-### 4. Kargo 앱 배포 전 (필요 시) kubectl 으로 Secret-Key 등록 (최초 1회)  
+### 4. (필요 시) Kargo 앱 배포 전 kubectl 으로 Secret-Key 등록 (최초 1회)  
 > kubectl create secret generic kakao-api-secret --from-literal=KAKAO_API_KEY=your_kakao_api_key
 <br/>
 
@@ -89,20 +89,15 @@
 - URL 재발급 X -> 재발급 시 5번 단계부터 다시 진행
 <br/>
 
-### 9. Kubectl 명령어
-> kubectl get secrets
+### 9. 메모용 Kubectl 명령어
+`$ kubectl get secrets`: 모든 secret-key 조회
 <br/>
-
-> kubectl delete secret {secret-key}
+`$ kubectl delete secret {secret-key}`: 해당 secret-key 삭제
 <br/>
-
-> kubectl get pods
+`$ kubectl get pods`: 모든 pod 조회
 <br/>
-
-> kubectl logs {pod}
+`$ kubectl logs {pod}`: 해당 pod 로그 조회
 <br/>
-
-> kubectl describe pod {pod}
+`$ kubectl describe pod {pod}`: 해당 pod 상세정보 조회
 <br/>
-
-> kubectl logs -f {pod}
+`$ kubectl logs -f {pod}`: 해당 pod 실시간 로그 조회
