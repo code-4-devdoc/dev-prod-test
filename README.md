@@ -52,7 +52,7 @@
 <br/>
 
 ### 2. D2Hub 레포지토리 생성 - 빌드 - 이미지 주소 복사  
-![image](https://github.com/OiPKL/krmp-test/assets/130027416/ccc29e04-b525-4859-bbe0-00592d59d6ca)
+![스크린샷 2024-06-09 162200](https://github.com/code-4-devdoc/dev-prod-test/assets/130027416/646d290e-fdc3-44c8-a99b-594f2317fa6d)
 <br/>
 <br/>
 
@@ -72,7 +72,7 @@
 <br/>
 
 ### 5. Kargo 앱 배포 (실패되는게 정상) - 외부 URL 주소 복사
-![image](https://github.com/OiPKL/krmp-test/assets/130027416/ccc29e04-b525-4859-bbe0-00592d59d6ca)
+![스크린샷 2024-06-09 163507](https://github.com/code-4-devdoc/dev-prod-test/assets/130027416/f38cd61d-20e3-4a78-8655-e562fc793b59)
 <br/>
 <br/>
 
