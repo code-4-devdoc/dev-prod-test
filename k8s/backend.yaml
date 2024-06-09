@@ -1,0 +1,66 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          # 여러분의 backend image 주소를 입력해주세요.
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_693a7baa2398
+          env:
+            - name: TZ
+              value: Asia/Seoul
+            - name: DATABASE_URL
+              value: jdbc:mariadb://mariadb:3306/krampoline
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: root
+#            # KAKAO_OUATH_KEY 추가
+#            - name: KAKAO_OAUTH_CLIENT_ID
+#              valueFrom:
+#                secretKeyRef:
+#                  name: oauth-secret
+#                  key: KAKAO_OAUTH_CLIENT_ID
+#            - name: KAKAO_OAUTH_CLIENT_SECRET
+#              valueFrom:
+#                secretKeyRef:
+#                  name: oauth-secret
+#                  key: KAKAO_OAUTH_CLIENT_SECRET
+#            # JWT_KEY 추가
+#            - name: JWT_SECRETKEY
+#              valueFrom:
+#                secretKeyRef:
+#                  name: jwt-secret
+#                  key: JWT_SECRETKEY
+            - name: HTTP_PROXY
+              value: http://krmp-proxy.9rum.cc:3128
+            - name: HTTPS_PROXY
+              value: http://krmp-proxy.9rum.cc:3128
+
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 8080
+      targetPort: 8080

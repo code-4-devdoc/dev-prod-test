@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          # 여러분의 frontend image 주소를 입력해주세요.
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_e1a6fcf498a2
+#          env:
+#            # KAKAO_API_KEY 추가
+#            - name: KAKAO_API_KEY
+#              valueFrom:
+#                secretKeyRef:
+#                  name: kakao-api-secret
+#                  key: KAKAO_API_KEY
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 3000
+      targetPort: 3000
